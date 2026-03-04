@@ -13,10 +13,11 @@ Prerequisites:
   EXPO_PUBLIC_STORE_TOKEN=
   EXPO_PUBLIC_STORE_DOMAIN=
   EXPO_PUBLIC_ENCRYPTION_KEY=
-  EXPO_PUBLIC_CUSTOMER_SHOP_ID=
+  EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID=
   EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT=
   EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN=
   EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT=
+  EXPO_PUBLIC_BACKEND_BASE_URL=
   ```
   All environment variables are prefixed with EXPO_PUBLIC to be available through the expo client this may change in the future.
   - `STORE_TOKEN` is your Storefront Public API Token
@@ -25,15 +26,15 @@ Prerequisites:
   - `CUSTOMER_STORE_ENDPOINT` is the endpoint given to you from the Shopify Headless app in the Customer Account API section
   - `CUSTOMER_ACCOUNT_API_TOKEN` is the Client ID of your Customer API Endpoint
 
-2. Install with npm
+2. Install dependencies with npm
   ```bash
-  npm create sellflow
+  npm install
   ```
 
 3. Start the app
 
    ```bash
-    npx expo start
+   npm run start
    ```
 
 In the output, you'll find options to open the app in a
