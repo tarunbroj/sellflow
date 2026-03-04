@@ -82,6 +82,7 @@ This is a **React Native + Expo** application using **Expo Router** for file-bas
 - `locales/` — i18n message catalogs.
 - `android/`, `ios/` — native platform projects for Expo build/runtime.
 - `.maestro/` — mobile E2E flow scripts.
+- `docs/` — operational docs for MVP scope and task workstreams.
 
 ## Route/entry map (main navigation)
 - Root layout: `app/_layout.tsx`
@@ -255,3 +256,5 @@ Interpretation: storage/auth/cart modules are central touchpoints and highest ri
 
 
 - **2026-03-04 (rev 2)**: Added `PROJECT_CONTEXT.md`, standardized package manager to npm, added runtime env validation (`lib/env.ts`), scaffolded backend API client (`lib/api/client.ts`), and removed account PII debug logging.
+
+- **2026-03-04 (rev 3)**: Added `docs/DEMO_MVP.md` and `docs/TASKS.md`; updated `app/(tabs)/index.tsx` with explicit UI states for loading/empty/error and retry behavior while keeping Storefront-only mobile scope.

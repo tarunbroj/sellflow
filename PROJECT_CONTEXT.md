@@ -28,6 +28,7 @@ Quick AI memory for active development. Read this file **first** on every task b
 - `lib/api/` — backend API client scaffold + future hooks/types
 - `styles/` — Unistyles theme config
 - `types/` — generated Storefront GraphQL types
+- `docs/` — execution docs (MVP definition, task workstreams)
 
 ## 4) Important entrypoints
 - `app/_layout.tsx` — provider composition (query, theme, Shopify, cart)
@@ -85,3 +86,7 @@ Notes:
 
 ## IMPORTANT RULE
 On every future task, read `PROJECT_CONTEXT.md` first before scanning the entire repository.
+
+
+## 9) Current implementation note
+- Home screen now includes explicit loading/empty/error states in `app/(tabs)/index.tsx`.
