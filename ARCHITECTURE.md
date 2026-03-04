@@ -75,7 +75,7 @@ This is a **React Native + Expo** application using **Expo Router** for file-bas
 - `app/` — Expo Router route tree (screens, layouts, dynamic routes).
 - `components/` — UI and feature components (cart/product/header/filter etc).
 - `components/shopify/` — cart provider/state machine/actions.
-- `shopify/` — Shopify API query helpers (product/search/order/user/cart/client).
+- `shopify/` — Shopify API query helpers (product/search/order/user/cart/client/home).
 - `lib/` — shared libs (auth/session/storage/env/i18n/utils).
 - `styles/` — Unistyles theme setup.
 - `types/` — generated storefront types + schema artifacts.
@@ -107,6 +107,8 @@ This is a **React Native + Expo** application using **Expo Router** for file-bas
 ---
 
 ## 4) Data flow (Shopify + backend + auth/session)
+
+- Home is CMS-driven via Storefront Metaobjects (`home_page` + section metaobjects) with fallback to static catalog grid when config is unavailable.
 
 ## Storefront product/search/cart flow
 - `ShopifyProvider` is configured in root layout with:
@@ -258,3 +260,5 @@ Interpretation: storage/auth/cart modules are central touchpoints and highest ri
 - **2026-03-04 (rev 2)**: Added `PROJECT_CONTEXT.md`, standardized package manager to npm, added runtime env validation (`lib/env.ts`), scaffolded backend API client (`lib/api/client.ts`), and removed account PII debug logging.
 
 - **2026-03-04 (rev 3)**: Added `docs/DEMO_MVP.md` and `docs/TASKS.md`; updated `app/(tabs)/index.tsx` with explicit UI states for loading/empty/error and retry behavior while keeping Storefront-only mobile scope.
+
+- **2026-03-04 (rev 4)**: Added Shopify Home CMS integration via `shopify/home.ts` (metaobject-driven section config), added `docs/MERCHANDISING.md`, and updated Home screen to render CMS sections dynamically with fallback to existing product-grid behavior.

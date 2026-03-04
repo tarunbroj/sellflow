@@ -34,6 +34,7 @@ Quick AI memory for active development. Read this file **first** on every task b
 - `app/_layout.tsx` — provider composition (query, theme, Shopify, cart)
 - `app/(tabs)/_layout.tsx` — main tab routing
 - `shopify/client.ts` — Storefront API client
+- `shopify/home.ts` — Home CMS config fetch + section normalization
 - `lib/auth.ts` — customer auth/token refresh helpers
 - `lib/storage.ts` — MMKV storage initialization
 - `components/shopify/CartProvider.tsx` — cart orchestration/state
@@ -90,3 +91,5 @@ On every future task, read `PROJECT_CONTEXT.md` first before scanning the entire
 
 ## 9) Current implementation note
 - Home screen now includes explicit loading/empty/error states in `app/(tabs)/index.tsx`.
+
+- Home screen is CMS-driven via Shopify Metaobjects when `home_page.default` is present; otherwise fallback product grid is used.
