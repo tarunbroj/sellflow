@@ -1,3 +1,4 @@
+import { env } from "@/lib/env";
 export const updateCustomerName = async ({
   firstName,
   lastName,
@@ -7,7 +8,7 @@ export const updateCustomerName = async ({
   lastName: string;
   accessToken: string;
 }) =>
-  await fetch(process.env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT!, {
+  await fetch(env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +36,7 @@ export const updateCustomerName = async ({
 
 // Retrieves user account info given user accessToken
 export const getUserInfo = async (accessToken: string) =>
-  await fetch(process.env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT!, {
+  await fetch(env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -73,7 +74,7 @@ export const getUserInfo = async (accessToken: string) =>
   });
 // Retrieves user info given user accessToken
 export const getUser = async (accessToken: string) =>
-  await fetch(process.env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT!, {
+  await fetch(env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

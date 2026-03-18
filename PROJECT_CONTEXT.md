@@ -50,6 +50,7 @@ Required now:
 - `EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN`
 - `EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT`
 - `EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID`
+- `EXPO_PUBLIC_CUSTOMER_SHOP_ID` (legacy alias supported)
 
 New backend variable (optional until backend endpoints are integrated):
 - `EXPO_PUBLIC_BACKEND_BASE_URL`
@@ -57,6 +58,7 @@ New backend variable (optional until backend endpoints are integrated):
 Notes:
 - `EXPO_PUBLIC_*` values are available to client code.
 - Never place Shopify Admin secrets in `EXPO_PUBLIC_*`.
+- Canonical env name is `EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID`; legacy `EXPO_PUBLIC_CUSTOMER_SHOP_ID` is accepted for compatibility.
 
 ## 6) Future backend architecture plan
 - Backend target: **NestJS**.

@@ -145,14 +145,12 @@ export default function Index() {
       collectionRailHandles.join(","),
       countryIsoCode,
       languageIsoCode,
-      accessToken,
     ],
     queryFn: async () =>
       fetchCollectionRailProducts({
         handles: collectionRailHandles,
         countryCode: countryIsoCode,
         languageCode: languageIsoCode,
-        accessToken,
       }),
   });
 

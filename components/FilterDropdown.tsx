@@ -1,5 +1,5 @@
 import { Dispatch, useContext, useEffect, useRef, useState } from "react";
-import { Platform, Text, View, Animated } from "react-native";
+import { Text, View, Animated } from "react-native";
 import { DropdownContext } from "./DropdownProvider";
 import Checkbox from "expo-checkbox";
 import {
@@ -68,11 +68,7 @@ export default function FilterDropdown({
   usePreventRemove(
     filter !== "sort" && filter?.type === "PRICE_RANGE" && dropdownOpen,
     ({ data }) => {
-      if (Platform.OS === "android") {
-        console.log("WORKING");
-      } else {
-        navigation.dispatch(data.action);
-      }
+      navigation.dispatch(data.action);
     },
   );
 
@@ -229,11 +225,9 @@ function FilterCheckbox({
       if (!checkboxValue) {
         const input = JSON.parse(value.input as string);
         dispatch({ type: "include", input });
-        console.log(state);
       } else {
         const input = JSON.parse(value.input as string);
         dispatch({ type: "remove", input });
-        console.log(state);
       }
     } catch (e) {
       console.error(e);

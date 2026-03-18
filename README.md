@@ -14,6 +14,7 @@ Prerequisites:
   EXPO_PUBLIC_STORE_DOMAIN=
   EXPO_PUBLIC_ENCRYPTION_KEY=
   EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID=
+  EXPO_PUBLIC_CUSTOMER_SHOP_ID= # optional legacy alias
   EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT=
   EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN=
   EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT=
@@ -25,6 +26,7 @@ Prerequisites:
   - `ENCRYPTION_KEY` random string used by [MMKV](https://github.com/mrousavy/react-native-mmkv) to encrypt user data.
   - `CUSTOMER_STORE_ENDPOINT` is the endpoint given to you from the Shopify Headless app in the Customer Account API section
   - `CUSTOMER_ACCOUNT_API_TOKEN` is the Client ID of your Customer API Endpoint
+- `CUSTOMER_SHOP_ID` is a legacy alias for `EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID`; prefer the ACCOUNT name going forward.
 
 2. Install dependencies with npm
   ```bash

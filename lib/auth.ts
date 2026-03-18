@@ -5,6 +5,7 @@ import {
   refreshAsync,
 } from "expo-auth-session";
 import { storage } from "./storage";
+import { env } from "@/lib/env";
 
 interface LoginUserProps {
   request: AuthRequest | null;
@@ -14,9 +15,9 @@ interface LoginUserProps {
 }
 
 export const discovery = {
-  authorizationEndpoint: `${process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT}/oauth/authorize`,
-  tokenEndpoint: `${process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT}/oauth/token`,
-  revocationEndpoint: `${process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT}/logout`,
+  authorizationEndpoint: `${env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT}/oauth/authorize`,
+  tokenEndpoint: `${env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT}/oauth/token`,
+  revocationEndpoint: `${env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_ENDPOINT}/logout`,
 };
 
 export const loginUser = ({
@@ -29,7 +30,7 @@ export const loginUser = ({
     if (request && codeResponse.type === "success") {
       exchangeCodeAsync(
         {
-          clientId: process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN!,
+          clientId: env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN,
           code: codeResponse.params.code,
           extraParams: request.codeVerifier
             ? { code_verifier: request.codeVerifier }
@@ -55,7 +56,7 @@ export const refreshUser = async () => {
   }
   refreshAsync(
     {
-      clientId: process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN!,
+      clientId: env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN,
       refreshToken: refreshToken,
     },
     discovery,

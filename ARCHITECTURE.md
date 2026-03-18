@@ -1,6 +1,6 @@
 # Selfflow / Sellflow Architecture Memory
 
-> Last updated: 2026-03-04 (rev 2)
+> Last updated: 2026-03-18 (rev 5)
 > Purpose: persistent, incrementally updatable architecture and security memory for this repository.
 
 ## 0) Safety Check (secrets/risky files before sharing)
@@ -121,6 +121,7 @@ This is a **React Native + Expo** application using **Expo Router** for file-bas
 ## Customer account flow
 - OAuth via `expo-auth-session` in `app/(tabs)/profile.tsx` and `lib/auth.ts`.
 - Tokens (`idToken`, `accessToken`, `refreshToken`) persisted in MMKV (`lib/storage.ts`).
+- Customer shop scheme env supports canonical `EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID` and legacy alias `EXPO_PUBLIC_CUSTOMER_SHOP_ID`.
 - Customer account GraphQL requests go to `EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT` in `shopify/user.ts` and `shopify/order.ts` with `Authorization: accessToken` header.
 
 ## Auth/session observations
@@ -169,7 +170,7 @@ Interpretation: storage/auth/cart modules are central touchpoints and highest ri
    - `lib/storage.ts` now requires `EXPO_PUBLIC_ENCRYPTION_KEY` via runtime env validation (no insecure fallback key).
 
 4. **Potential sensitive logging**
-   - `console.log` customer default address in `app/account.tsx` (PII exposure risk).
+   - Removed several residual debug logs from UI paths (`app/(tabs)/cart.tsx`, `components/FilterDropdown.tsx`); continue avoiding logs that may expose customer/session context.
 
 5. **Mixed client/server boundary not enforced**
    - No dedicated server layer in this repo; all calls are from client/mobile runtime.
@@ -262,3 +263,5 @@ Interpretation: storage/auth/cart modules are central touchpoints and highest ri
 - **2026-03-04 (rev 3)**: Added `docs/DEMO_MVP.md` and `docs/TASKS.md`; updated `app/(tabs)/index.tsx` with explicit UI states for loading/empty/error and retry behavior while keeping Storefront-only mobile scope.
 
 - **2026-03-04 (rev 4)**: Added Shopify Home CMS integration via `shopify/home.ts` (metaobject-driven section config), added `docs/MERCHANDISING.md`, and updated Home screen to render CMS sections dynamically with fallback to existing product-grid behavior.
+
+- **2026-03-18 (rev 5)**: Performed local verification sweep, standardized env naming compatibility for customer shop ID aliasing, removed residual debug logs, and hardened Home rail query to use GraphQL variables for context instead of string interpolation.

@@ -1,10 +1,11 @@
 import { SelectedOptionInput } from "@/types/storefront.types";
 import { createStorefrontApiClient } from "@shopify/storefront-api-client";
 import { UnknownOutputParams } from "expo-router";
+import { env } from "@/lib/env";
 
 export const client = createStorefrontApiClient({
-  storeDomain: process.env.EXPO_PUBLIC_STORE_DOMAIN!,
-  publicAccessToken: process.env.EXPO_PUBLIC_STORE_TOKEN!,
+  storeDomain: env.EXPO_PUBLIC_STORE_DOMAIN,
+  publicAccessToken: env.EXPO_PUBLIC_STORE_TOKEN,
   apiVersion: "2025-04",
 });
 

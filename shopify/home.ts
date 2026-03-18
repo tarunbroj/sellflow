@@ -378,12 +378,10 @@ export const fetchCollectionRailProducts = async ({
   handles,
   countryCode,
   languageCode,
-  accessToken,
 }: {
   handles: string[];
   countryCode: CountryCode;
   languageCode: LanguageCode;
-  accessToken?: string | null;
 }): Promise<Record<string, StorefrontProduct[]>> => {
   const uniqueHandles = Array.from(new Set(handles)).filter(Boolean);
   if (uniqueHandles.length === 0) {
@@ -402,7 +400,12 @@ export const fetchCollectionRailProducts = async ({
         errors?: { message?: string }[];
       }>(
         `#graphql
-        query CollectionRailProducts($handle: String!, $first: Int!) @inContext(country: ${countryCode}, language: ${languageCode} ${accessToken ? `, buyer: { customerAccessToken: "${accessToken}" }` : ""}) {
+        query CollectionRailProducts(
+          $handle: String!
+          $first: Int!
+          $country: CountryCode
+          $language: LanguageCode
+        ) @inContext(country: $country, language: $language) {
           collection(handle: $handle) {
             handle
             products(first: $first) {
@@ -438,6 +441,8 @@ export const fetchCollectionRailProducts = async ({
           variables: {
             handle,
             first: 8,
+            country: countryCode,
+            language: languageCode,
           },
         },
       );
@@ -446,7 +451,8 @@ export const fetchCollectionRailProducts = async ({
         return [handle, [] as StorefrontProduct[]] as const;
       }
 
-      const products = response.data?.collection?.products?.edges?.map((edge) => edge.node) ?? [];
+      const products =
+        response.data?.collection?.products?.edges?.map((edge) => edge.node) ?? [];
       return [handle, products] as const;
     }),
   );
