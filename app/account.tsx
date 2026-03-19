@@ -45,7 +45,6 @@ export default function Account() {
         const data = await getUserInfo(accessToken);
         const parsedData = await data.json();
 
-        console.log(parsedData.data.customer.defaultAddress);
         return parsedData.data.customer;
       }
     },

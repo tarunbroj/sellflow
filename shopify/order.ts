@@ -1,5 +1,6 @@
+import { env } from "@/lib/env";
 export const getOrder = async (accessToken: string, orderId: string) =>
-  await fetch(process.env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT!, {
+  await fetch(env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -81,7 +82,7 @@ export const getOrder = async (accessToken: string, orderId: string) =>
   });
 
 export const getOrders = async (accessToken: string) =>
-  await fetch(process.env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT!, {
+  await fetch(env.EXPO_PUBLIC_CUSTOMER_STORE_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

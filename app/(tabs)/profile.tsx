@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import ProfileSkeleton from "@/components/ProfileSkeleton";
 import { StyleSheet } from "react-native-unistyles";
 import Icon from "@/components/Icon";
+import { env } from "@/lib/env";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -29,12 +30,12 @@ export default function Index() {
     scheme:
       Platform.OS === "web"
         ? "https://"
-        : process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID,
+        : env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_SHOP_ID,
     path: "profile",
   });
   const [request, response, promptAsync] = useAuthRequest(
     {
-      clientId: process.env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN!,
+      clientId: env.EXPO_PUBLIC_CUSTOMER_ACCOUNT_API_TOKEN,
       scopes: ["openid", "email", "customer-account-api:full"],
       redirectUri,
     },

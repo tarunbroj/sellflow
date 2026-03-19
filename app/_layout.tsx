@@ -30,6 +30,7 @@ import { t } from "@lingui/core/macro";
 import { useMMKVString } from "react-native-mmkv";
 import { storage } from "@/lib/storage";
 import { DefaultComponent, i18n } from "@/lib/i18n";
+import { env } from "@/lib/env";
 
 const locales = getLocales();
 let languageCode = locales[0]?.languageCode || "en";
@@ -114,9 +115,9 @@ export default function RootLayout() {
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
           >
             <ShopifyProvider
-              storeDomain={process.env.EXPO_PUBLIC_STORE_DOMAIN!}
+              storeDomain={env.EXPO_PUBLIC_STORE_DOMAIN}
               storefrontApiVersion="2025-01"
-              storefrontToken={process.env.EXPO_PUBLIC_STORE_TOKEN!}
+              storefrontToken={env.EXPO_PUBLIC_STORE_TOKEN}
               countryIsoCode={countryIsoCode}
               languageIsoCode={languageIsoCode}
             >

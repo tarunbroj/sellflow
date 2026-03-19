@@ -55,9 +55,8 @@ export default function Cart() {
       shopifyCheckout?.addEventListener("completed", async () => {
         try {
           Notifications.cancelAllScheduledNotificationsAsync();
-          console.log("All pending notifications have been cancelled");
         } catch (e) {
-          console.log("Failed to cancel notificaitons");
+          console.error("Failed to cancel checkout notifications");
         }
       });
       shopifyCheckout?.addEventListener("close", async () => {
